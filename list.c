@@ -29,15 +29,36 @@ Node * createNode(void * data) {
 }
 
 List * createList() {
-     return NULL;
+    List *newList = (List *)calloc(1, sizeof(List));
+    if (newList == NULL) {
+        fprintf(stderr, "Error: No se pudo asignar memoria para la lista.\n");
+        exit(EXIT_FAILURE);
+    }
+    return newList;    
 }
 
 void * firstList(List * list) {
-    return NULL;
+    if (list->head == NULL) {
+        fprintf(stderr, "Error: La lista está vacía.\n");
+        return NULL;
+    }    
+    list->current = list->head;
+    return list->current->data;
 }
 
 void * nextList(List * list) {
-    return NULL;
+    if (list->current == NULL) {
+        fprintf(stderr, "Error: El current no está configurado o la lista está vacía.\n");
+        return NULL;
+    }
+    
+    list->current = list->current->next;
+    if (list->current == NULL) {
+        fprintf(stderr, "Error: No hay un nodo siguiente.\n");
+        return NULL;
+    }
+    
+    return list->current->data;
 }
 
 void * lastList(List * list) {
