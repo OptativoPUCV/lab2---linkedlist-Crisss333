@@ -134,8 +134,37 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-    return NULL;
+    if (list->current == NULL) {
+        fprintf(stderr, "Error: El current no está configurado.\n");
+        return NULL;
+    }
+
+    Node *nodeToRemove = list->current;
+    void *data = nodeToRemove->data;
+
+    if (nodeToRemove == list->head) {
+        list->head = nodeToRemove->next;
+    } else {
+        nodeToRemove->prev->next = nodeToRemove->next;
+    }
+
+    if (nodeToRemove == list->tail) {
+        list->tail = nodeToRemove->prev;
+    } else {
+        nodeToRemove->next->prev = nodeToRemove->prev;
+    }
+
+    if (nodeToRemove->next != NULL) {
+        list->current = nodeToRemove->next;
+    } else {
+        list->current = nodeToRemove->prev;
+    }
+
+    free(nodeToRemove);
+
+    return data;
 }
+
 
 void cleanList(List * list) {
     while (list->head != NULL) {
