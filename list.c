@@ -31,7 +31,7 @@ Node * createNode(void * data) {
 List * createList() {
     List *newList = (List *)calloc(1, sizeof(List));
     if (newList == NULL) {
-        fprintf(stderr, "Error: No se pudo asignar memoria para la lista.\n");
+        //fprintf(stderr, "Error: No se pudo asignar memoria para la lista.\n");
         exit(EXIT_FAILURE);
     }
     return newList;    
@@ -39,7 +39,7 @@ List * createList() {
 
 void * firstList(List * list) {
     if (list->head == NULL) {
-        fprintf(stderr, "Error: La lista está vacía.\n");
+        //fprintf(stderr, "Error: La lista está vacía.\n");
         return NULL;
     }    
     list->current = list->head;
@@ -48,13 +48,13 @@ void * firstList(List * list) {
 
 void * nextList(List * list) {
     if (list->current == NULL) {
-        fprintf(stderr, "Error: El current no está configurado o la lista está vacía.\n");
+        //fprintf(stderr, "Error: El current no está configurado o la lista está vacía.\n");
         return NULL;
     }
     
     list->current = list->current->next;
     if (list->current == NULL) {
-        fprintf(stderr, "Error: No hay un nodo siguiente.\n");
+        //fprintf(stderr, "Error: No hay un nodo siguiente.\n");
         return NULL;
     }    
     return list->current->data;
@@ -62,7 +62,7 @@ void * nextList(List * list) {
 
 void * lastList(List * list) {
     if (list->tail == NULL) {
-        fprintf(stderr, "Error: La lista está vacía.\n");
+        //fprintf(stderr, "Error: La lista está vacía.\n");
         return NULL;
     }
     
@@ -72,13 +72,13 @@ void * lastList(List * list) {
 
 void * prevList(List * list) {
     if (list->current == NULL) {
-        fprintf(stderr, "Error: El current no está configurado o la lista está vacía.\n");
+        //fprintf(stderr, "Error: El current no está configurado o la lista está vacía.\n");
         return NULL;
     }
     
     list->current = list->current->prev;
     if (list->current == NULL) {
-        fprintf(stderr, "Error: No hay un nodo anterior.\n");
+        //fprintf(stderr, "Error: No hay un nodo anterior.\n");
         return NULL;
     }
     
@@ -105,7 +105,7 @@ void pushBack(List * list, void * data) {
 
 void pushCurrent(List * list, void * data) {
     if (list->current == NULL) {
-        fprintf(stderr, "Error: El current no está configurado.\n");
+        //fprintf(stderr, "Error: El current no está configurado.\n");
         return;
     }
     
@@ -135,7 +135,7 @@ void * popBack(List * list) {
 
 void * popCurrent(List * list) {
     if (list->current == NULL) {
-        fprintf(stderr, "Error: El current no está configurado.\n");
+        //fprintf(stderr, "Error: El current no está configurado.\n");
         return NULL;
     }
 
@@ -164,7 +164,6 @@ void * popCurrent(List * list) {
 
     return data;
 }
-
 
 void cleanList(List * list) {
     while (list->head != NULL) {
