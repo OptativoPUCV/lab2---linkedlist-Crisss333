@@ -104,6 +104,23 @@ void pushBack(List * list, void * data) {
 }
 
 void pushCurrent(List * list, void * data) {
+    if (list->current == NULL) {
+        fprintf(stderr, "Error: El current no está configurado.\n");
+        return;
+    }
+    
+    Node *newNode = createNode(data);
+    
+    newNode->next = list->current->next;
+    if (list->current->next != NULL) {
+        list->current->next->prev = newNode;
+    } else {
+        // Si el nodo actual es el último nodo, actualiza la cola de la lista
+        list->tail = newNode;
+    }
+    
+    newNode->prev = list->current;
+    list->current->next = newNode;
 }
 
 void * popFront(List * list) {
