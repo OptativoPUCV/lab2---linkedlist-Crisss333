@@ -22,3 +22,9 @@ list.c:22:8: note: previous definition of ‘createNode’ with type ‘Node *(v
       |        ^~~~~~~~~~
 Compilation failed
 42585c7
+Thu 24 Aug 2023 08:36:40 PM UTC: 
+ list.c | 12 ------------
+ 1 file changed, 12 deletions(-)
+ tests:  10|2
+total_score: 45/70
+e2e2c07
