@@ -85,7 +85,29 @@ void * prevList(List * list) {
     return list->current->data;
 }
 
+Node *createNode(void *data) {
+    Node *newNode = (Node *)malloc(sizeof(Node));
+    if (newNode == NULL) {
+        fprintf(stderr, "Error: No se pudo asignar memoria para el nodo.\n");
+        exit(EXIT_FAILURE);
+    }
+    newNode->data = data;
+    newNode->next = NULL;
+    newNode->prev = NULL;
+    return newNode;
+}
+
 void pushFront(List * list, void * data) {
+    Node *newNode = createNode(data);
+    
+    if (list->head == NULL) {
+        list->head = newNode;
+        list->tail = newNode;
+    } else {
+        newNode->next = list->head;
+        list->head->prev = newNode;
+        list->head = newNode;
+    }
 }
 
 void pushBack(List * list, void * data) {

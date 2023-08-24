@@ -10,3 +10,15 @@ Thu 24 Aug 2023 08:30:54 PM UTC:
  tests:  9|3
 total_score: 35/70
 e6205e9
+Thu 24 Aug 2023 08:35:31 PM UTC: 
+ list.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+In file included from test.c:5:
+list.c:88:7: error: redefinition of ‘createNode’
+   88 | Node *createNode(void *data) {
+      |       ^~~~~~~~~~
+list.c:22:8: note: previous definition of ‘createNode’ with type ‘Node *(void *)’
+   22 | Node * createNode(void * data) {
+      |        ^~~~~~~~~~
+Compilation failed
+42585c7
