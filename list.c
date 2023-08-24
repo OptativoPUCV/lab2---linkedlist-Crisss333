@@ -56,17 +56,33 @@ void * nextList(List * list) {
     if (list->current == NULL) {
         fprintf(stderr, "Error: No hay un nodo siguiente.\n");
         return NULL;
-    }
-    
+    }    
     return list->current->data;
 }
 
 void * lastList(List * list) {
-    return NULL;
+    if (list->tail == NULL) {
+        fprintf(stderr, "Error: La lista está vacía.\n");
+        return NULL;
+    }
+    
+    list->current = list->tail;
+    return list->current->data;
 }
 
 void * prevList(List * list) {
-    return NULL;
+    if (list->current == NULL) {
+        fprintf(stderr, "Error: El current no está configurado o la lista está vacía.\n");
+        return NULL;
+    }
+    
+    list->current = list->current->prev;
+    if (list->current == NULL) {
+        fprintf(stderr, "Error: No hay un nodo anterior.\n");
+        return NULL;
+    }
+    
+    return list->current->data;
 }
 
 void pushFront(List * list, void * data) {
